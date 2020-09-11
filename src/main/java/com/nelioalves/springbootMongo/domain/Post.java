@@ -1,12 +1,15 @@
 package com.nelioalves.springbootMongo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.nelioalves.springbootMongo.dto.AuthorDTO;
+import com.nelioalves.springbootMongo.dto.CommentDTO;
 
 @Document
 public class Post implements Serializable {
@@ -18,6 +21,8 @@ public class Post implements Serializable {
 	private String titulo;
 	private String corpo;
 	private AuthorDTO autor;
+	
+	private List<CommentDTO> comentarios = new ArrayList<>();
 	
 	public Post() {
 	}
@@ -69,6 +74,14 @@ public class Post implements Serializable {
 
 	public void setAutor(AuthorDTO autor) {
 		this.autor = autor;
+	}
+
+	public List<CommentDTO> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<CommentDTO> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	@Override
